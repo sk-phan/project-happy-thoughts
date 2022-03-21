@@ -5,9 +5,93 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  justify-content: center;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+html {
+  font-size: 62.5%;
+}
+
+.container {
+  width: 500px;
+}
+
+.btn {
+  background: #e2e2e2;
+  border: none;
+  padding: 0.8rem;
+  transition: all 0.4s ease;
+}
+
+.btn:hover {
+  background: #fad2d2;
+  cursor: pointer;
+}
+
+.heart-btn {
+   width: 3rem;
+   height: 3rem;
+   border-radius: 50%;
+   margin-right: 0.5rem;
+}
+
+.heart-btn-container span,
+.thought-date {
+  font-size: 1.4rem;
+  color: #999;
+}
+
+.new-thought-btn {
+  width: 20rem;
+  border-radius: 40px;
+}
+
+
+.thought-card,
+.thought-interaction {
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+
+.thought-card {
+  background: #f2f0f0;
+  flex-direction: column;
+  border: solid 1px #333;
+  padding: 2.4rem;
+  margin-bottom: 2.4rem;
+  box-shadow: 10px 10px #333;
+}
+
+.thought-interaction {
+  align-items: center;
+  flex-direction: row;
+}
+
+
+.new-thought-form {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2.4rem;
+  background: #faf5f5;
+}
+
+
+label,
+.thought-text {
+  font-size: 1.6rem;
+}
+
+input[type = 'text']{
+  height: 5rem;
+  width: 100%;
+  align-self: center;
+}
+

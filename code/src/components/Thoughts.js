@@ -1,6 +1,9 @@
 import React, {useState, useEffect} from "react";
 import { format, formatDistance, formatRelative, subDays } from 'date-fns'
+import NewThoughts from "./NewThoughts";
 //import NewThoughts from "./NewThoughts";
+
+const API_KEY = 'https://happy-thoughts-technigo.herokuapp.com/thoughts';
 
 
 
@@ -18,7 +21,7 @@ const Thoughts = () => {
     }
 
     const fetchData = () => {
-        fetch('https://happy-thoughts-technigo.herokuapp.com/thoughts')
+        fetch(API_KEY)
         .then(res => res.json())
         .then(data => {
             console.log(data)
@@ -30,7 +33,7 @@ const Thoughts = () => {
     const handleFormSubmit = (e) => {
         e.preventDefault();
 
-        fetch('https://happy-thoughts-technigo.herokuapp.com/thoughts', options)
+        fetch(API_KEY, options)
         .then(res => res.json)
         .then(data => setThoughts((prevThoughts) => [data, ...prevThoughts] ))
     
@@ -40,37 +43,33 @@ const Thoughts = () => {
         fetchData();
     }, [])
 
-    return <>
+    return <div className='container'>
 
 
-         <form onSubmit={handleFormSubmit}>
-            <label htmlFor='newThoughts'> Write your thoughts</label>
-            <input 
-            type='text'
-            id='newThoughts'
-            value = {newThoughts}
-            onChange={(e) => setNewThoughts(e.target.value)}
-            />
-            <button type="submit">Send</button>
+         <NewThoughts 
+         newThoughts = {newThoughts}
+         setNewThoughts = {setNewThoughts}
+         handleFormSubmit = {handleFormSubmit}
+         />
 
-        </form>
-        
         
         {thoughts.map(thought => {
           
-          return(
-           
-            <div key={thought._id}>
-            <button>❤️ {thought.hearts}</button>
-            <p>{thought.message}</p>
-            <span>{thought.createdAt}</span>
+          return( 
+            <div className='thought-card' key={thought._id}>
+            <p className='thought-text'>{thought.message}</p>
+            <div className='thought-interaction'>
+
+            <div className='heart-btn-container'><button className='heart-btn btn'>❤️</button> <span> x {thought.hearts}</span></div>
+            <span className='thought-date'>{thought.createdAt}</span>
+            </div>
             </div>
           )
          
 
         }
         )}
-    </>
+    </div>
 }
 
 export default Thoughts;
