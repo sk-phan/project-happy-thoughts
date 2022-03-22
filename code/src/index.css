@@ -70,6 +70,10 @@ html {
   box-shadow: 10px 10px #333;
 }
 
+.thought-card p {
+  inline-size: 100%;
+  overflow-wrap: break-word;
+}
 .thought-interaction {
   align-items: center;
   flex-direction: row;

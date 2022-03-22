@@ -1,6 +1,7 @@
 import React from "react";
 
-const NewThoughts = ( {newThoughts, setNewThoughts, handleFormSubmit} ) => {
+const NewThoughts = ( {newThoughts, setNewThoughts, handleFormSubmit,  newThoughtsInput, setNewThoughtsInput} ) => {
+
     return (
         <form className='thought-card new-thought-form' onSubmit={handleFormSubmit}>
             <label htmlFor='newThoughts'> What's making you happy right now?</label>
@@ -11,8 +12,14 @@ const NewThoughts = ( {newThoughts, setNewThoughts, handleFormSubmit} ) => {
             value = {newThoughts}
             onChange={(e) => setNewThoughts(e.target.value)}
             />
+
+
+            <span id='text'></span>
+            <span id='thought-length'>{newThoughtsInput}</span>
+
+            <span>{newThoughts.length > 6 ? newThoughts.length : 'too long'}/ 140</span>
             
-            <button className='new-thought-btn btn' type='submit'>❤️ Send Happy Thoughts ❤️</button>
+            <button disabled = {newThoughtsInput < 4} className='new-thought-btn btn' type='submit'>❤️ Send Happy Thoughts ❤️</button>
 
         </form>
     )
