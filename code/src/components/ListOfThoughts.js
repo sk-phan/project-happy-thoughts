@@ -1,27 +1,32 @@
-import React from "react";
+import React, {useEffect} from "react";
+import { formatDistance } from 'date-fns';
 
 
-const Thoughts = ( { thoughts, handleLikes } ) => {
+
+const ListOfThoughts = ( { thought, handleLikes, animation } ) => {
    
-    return <>
-    {thoughts.map(thought => {
-        
-        return( 
-            
-            <div className='thought-card' key={thought._id}>
+
+
+    return <div>        
           <p className='thought-text'>{thought.message}</p>
           <div className='thought-interaction'>
+        
+          <div className='heart-btn-container'>
+          <span id={`${animation ? 'heart-onClick' : ''}`} className='hidden' >❤️</span>
+              <button onClick={() => handleLikes(thought)} className='heart-btn btn'>
+                <span className='hearts'>💜</span>  
+              </button> 
+              <span> x {thought.hearts}</span>
+          </div>
 
-          <div className='heart-btn-container'><button onClick={handleLikes} className='heart-btn btn'>❤️</button> <span> x {thought.hearts}</span></div>
-          <span className='thought-date'>{thought.createdAt}</span>
+          
+
+          <span className='thought-date'>	{formatDistance(new Date(thought.createdAt), Date.now(), {
+								addSuffix: true,
+							})}</span>
           </div>
-          </div>
-        )
         
-        
-    }
-    )}
-    </>
+    </div>
 }
 
-export default Thoughts;
+export default ListOfThoughts;

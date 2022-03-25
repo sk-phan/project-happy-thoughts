@@ -1,17 +1,28 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --dominantBlue: #707BFB;
+  --dominantWhite: #fff;
+  --accentBlue: #c6d9fa ;
+  --accentPink: #F3E0F0;
+  --accentBlack: #333;
+}
+
+
+/******  GENERAL STYLING ******/
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: flex;
   justify-content: center;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  color: #333;
+  background: var(--accentPink);
 }
 
 html {
@@ -19,26 +30,44 @@ html {
 }
 
 .container {
-  width: 500px;
+  padding: 3.2rem;
+  min-width: 375px;
+  width: 375px;
+  display: flex;
+  flex-direction: column;
 }
 
+.background-size {  
+  background-size: cover;
+}
+
+/****** BUTTON STYLING ******/
 .btn {
-  background: #e2e2e2;
+  background: var(--accentPink);
   border: none;
   padding: 0.8rem;
   transition: all 0.4s ease;
+  color: #fff;
 }
 
 .btn:hover {
-  background: #fad2d2;
+  background: var(--dominantBlue);
   cursor: pointer;
 }
 
 .heart-btn {
    width: 3rem;
    height: 3rem;
+   padding: 2px;
+   font-size: 1.5rem;
    border-radius: 50%;
    margin-right: 0.5rem;
+}
+
+
+.hearts {
+  animation: fadedHeart 1s infinite ease;
+
 }
 
 .heart-btn-container span,
@@ -50,52 +79,254 @@ html {
 .new-thought-btn {
   width: 20rem;
   border-radius: 40px;
+  background-color: var(--dominantBlue);
+}
+
+.new-thought-btn:disabled {
+   background-color: var(--accentBlue);
+}
+
+
+
+/****** LOGO STYLING ******/
+.logo {
+  width: 80px;
+  height: auto;
+  display: block;
+  align-self: center;
+  animation: spin 5s linear infinite;
+  margin-bottom: 3.2rem;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+
+}
+
+/****** THOUGHT CARD STYLING ******/
+.thought-card,
+.thought-interaction {
+  display: flex;
+  justify-content: space-between;  
 }
 
 
 .thought-card,
-.thought-interaction {
-  display: flex;
-  justify-content: space-between;
-  
-}
-
-
-.thought-card {
-  background: #f2f0f0;
+.liked-text-container  {
   flex-direction: column;
   border: solid 1px #333;
   padding: 2.4rem;
   margin-bottom: 2.4rem;
   box-shadow: 10px 10px #333;
+  border-radius: 5px;
+}
+
+
+.thought-card {
+  transition: all 0.4s ease-in-out;
+  animation: fadedCard 1s ease-in-out;
+  cursor: pointer;
+  background: #fff;
+}
+
+.thought-card:hover:not(form) {
+  transform: scale(1.1);
+  box-shadow: none;
+}
+
+
+@keyframes fadedCard {
+  0% {
+    opacity: 0;
+  }
 }
 
 .thought-card p {
   inline-size: 100%;
   overflow-wrap: break-word;
+  margin-bottom: 1rem;
 }
+
 .thought-interaction {
   align-items: center;
   flex-direction: row;
 }
 
-
+/****** THOUGHT INPUT FORM STYLING ******/
 .new-thought-form {
   flex-direction: column;
   align-items: flex-start;
   gap: 2.4rem;
-  background: #faf5f5;
+  border-radius: 5px;
 }
 
+.thought-question {
+  font-weight: 600;
+}
 
 label,
 .thought-text {
   font-size: 1.6rem;
+  
 }
 
 input[type = 'text']{
   height: 5rem;
   width: 100%;
   align-self: center;
+  appearance: none;
+  padding: 1rem;
+  border: solid 1px transparent;
+  background: #f3f3fe;
+  box-shadow: 5px 5px 5px rgba(104, 103, 103, 0.027);
 }
 
+input[type = 'text']:focus {
+  border: var(--dominantBlue);
+}
+
+
+
+.red {
+  color: red;
+}
+
+input[type=radio] { 
+   position: absolute;
+   opacity: 0;
+   cursor: pointer;
+
+}
+
+
+/* CHECKED STYLES */
+input[type=radio]:checked + img {
+  outline: 2px solid var(--dominantBlue);
+  border: transparent;
+}
+
+.radio-img {
+  width: 20px;
+  height: auto;
+  border-radius: 50%;
+  margin-right: 10px;
+  border: solid 1.2px #333;
+}
+
+/*SELECT MENUS */
+select {
+  appearance: none;
+  cursor: inherit;
+  background: var(--accentPink);
+  border-radius: 5px;
+  padding: 5px;
+  outline: none;
+  margin: 0;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+
+.text-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.character-counter {
+  font-size: 1.2rem;
+}
+
+/**** LIKED THOUGHTS *****/
+.liked-thoughts{
+  background-color: var(--dominantWhite);
+}
+
+.liked-text {
+  padding-top: 1rem;
+  border-top: solid 1px #333;
+  animation: fadedCard 1s ease-in-out;
+}
+
+
+
+.liked-text-container {
+  background-color: var(--accentBlue);
+  font-size: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  height: 150px;
+  overflow:scroll;
+  gap: 1.2rem;
+  position: relative;
+}
+
+.delete-btn {
+  background-color: var(--dominantBlue);
+  font-size: 1.4rem;
+  color: var(--dominantWhite);
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: var(--accentPink);
+  color: var(--accentBlack);
+}
+
+.liked-thought-counter {
+  font-weight: 700;
+}
+
+.liked-thought-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.heart {
+  animation: fadedHeart 1s infinite ease;
+}
+
+@keyframes fadedHeart {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+#heart-onClick {
+  animation: ani 1s ease-in-out;
+  position: absolute;
+  display: inline-block;
+  opacity: 0;
+}
+
+@keyframes ani {
+  0% {
+    display: inline-block;
+    opacity: 1;
+    display: inline-block;
+  }
+  50% {
+    transform: translate(-2px, -20px) scale(1.5);
+
+  }
+  100% {
+    opacity: 0;
+    transform: translate(4px, -40px) scale(0);
+  }
+}
