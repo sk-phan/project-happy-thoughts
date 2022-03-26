@@ -13,7 +13,7 @@ const NewThoughts = ( {newThoughts, handleFormInput, newThoughtsInput, thoughtId
     // Count input characters
   
     useEffect (() => {
-        newThoughtsInput < 5 && newThoughtsInput > 0 
+        newThoughtsInput < 5 && newThoughtsInput > 0 || newThoughtsInput > 130
         ? setCharacterCounterColor('red') 
         : setCharacterCounterColor('');
     }, [newThoughts])
