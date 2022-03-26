@@ -59,6 +59,7 @@ const Thoughts = () => {
      // Fetch API and get 20 current thoughts when the component get mounted
      useEffect(() => {
             fetchData();   
+            setInterval(fetchData, 10000);
         }, [])
         
  
