@@ -227,6 +227,7 @@ select {
   padding: 5px;
   outline: none;
   margin: 0;
+  color: var(--accentBlack);
 }
 
 select::-ms-expand {
