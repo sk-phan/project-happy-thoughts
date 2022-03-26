@@ -224,6 +224,7 @@ select {
   cursor: inherit;
   background: var(--accentPink);
   border-radius: 5px;
+  border: solid 1px var(--accentBlack);
   padding: 5px;
   outline: none;
   margin: 0;
