@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 
-import select from './Select'
+import ThoughtInspo from './ThoughtInspo'
 
 
 
@@ -16,9 +16,8 @@ const NewThoughts = ( {newThoughts, handleFormInput, newThoughtsInput, thoughtId
         newThoughtsInput < 5 && newThoughtsInput > 0 
         ? setCharacterCounterColor('red') 
         : setCharacterCounterColor('');
-    }, [newThoughtsInput])
+    }, [newThoughts])
     
- 
 
     return (
         <>
@@ -27,7 +26,7 @@ const NewThoughts = ( {newThoughts, handleFormInput, newThoughtsInput, thoughtId
             <input 
             type='text'
             id='newThoughts'
-            placeholder='Write positive thought'
+            placeholder='Write positive thought here'
             value = {newThoughts}
             onChange={(e) => handleFormInput(e.target.value)}
             minLength= '5'
@@ -36,7 +35,7 @@ const NewThoughts = ( {newThoughts, handleFormInput, newThoughtsInput, thoughtId
            
            <div className='text-container'>
 
-            <span className= {`${characterCounterColor}, character-counter`}> 
+            <span className= {`${characterCounterColor} character-counter`}> 
             {
             newThoughtsInput < 5 && newThoughtsInput > 0 
             ? 'Too short to be happy' : newThoughtsInput === 0 ? 'Min 5 characters' 
@@ -52,7 +51,7 @@ const NewThoughts = ( {newThoughts, handleFormInput, newThoughtsInput, thoughtId
             value={thoughtIdeas} 
             onChange={(e) => getThoughtIdeas(e.target.value)}> 
             
-                {select.map(item => {
+                {ThoughtInspo.map(item => {
                     return (
                     <option key={item.id}
                     value={item.message}> 

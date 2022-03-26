@@ -1,4 +1,4 @@
- const select = [
+ const thoughtInspo = [
     {
         id: 1,
         message: 'Thought inspiration'
@@ -22,4 +22,4 @@
 
  ]
 
- export default select;
+ export default thoughtInspo;

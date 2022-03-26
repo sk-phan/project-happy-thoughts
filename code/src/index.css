@@ -48,6 +48,8 @@ html {
   padding: 0.8rem;
   transition: all 0.4s ease;
   color: #fff;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .btn:hover {
@@ -94,14 +96,12 @@ html {
   height: auto;
   display: block;
   align-self: center;
-  animation: spin 5s linear infinite;
+  animation: rotate 8s linear infinite;
   margin-bottom: 3.2rem;
 }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
+@keyframes rotate {
+
   100% {
     transform: rotate(360deg);
   }
@@ -184,6 +184,7 @@ input[type = 'text']{
   border: solid 1px transparent;
   background: #f3f3fe;
   box-shadow: 5px 5px 5px rgba(104, 103, 103, 0.027);
+  font-size: 1.6rem;
 }
 
 input[type = 'text']:focus {
@@ -191,23 +192,22 @@ input[type = 'text']:focus {
 }
 
 
-
 .red {
-  color: red;
+  color: rgb(250, 110, 110);
 }
 
 input[type=radio] { 
    position: absolute;
    opacity: 0;
    cursor: pointer;
-
+   color: var(--accentBlack);
 }
 
 
 /* CHECKED STYLES */
 input[type=radio]:checked + img {
-  outline: 2px solid var(--dominantBlue);
-  border: transparent;
+  border: 2px solid var(--dominantBlue);
+  outline: none;
 }
 
 .radio-img {
@@ -232,6 +232,7 @@ select {
 select::-ms-expand {
   display: none;
 }
+
 
 
 .text-container {
@@ -268,6 +269,8 @@ select::-ms-expand {
   overflow:scroll;
   gap: 1.2rem;
   position: relative;
+  overflow-wrap: break-word;
+
 }
 
 .delete-btn {

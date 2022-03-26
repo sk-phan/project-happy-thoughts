@@ -3,7 +3,7 @@ import { formatDistance } from 'date-fns';
 
 
 
-const ListOfThoughts = ( { thought, handleLikes, animation } ) => {
+const ListOfThoughts = ( { thought, handleLikes } ) => {
    
 
 
@@ -12,7 +12,7 @@ const ListOfThoughts = ( { thought, handleLikes, animation } ) => {
           <div className='thought-interaction'>
         
           <div className='heart-btn-container'>
-          <span id={`${animation ? 'heart-onClick' : ''}`} className='hidden' >❤️</span>
+          <span className='hidden' >❤️</span>
               <button onClick={() => handleLikes(thought)} className='heart-btn btn'>
                 <span className='hearts'>💜</span>  
               </button> 

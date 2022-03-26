@@ -1,14 +1,11 @@
 import React, {useState, useEffect} from "react";
 
-import { format, formatDistance, formatRelative, subDays } from 'date-fns'
 import NewThoughts from "./NewThoughts";
 import ListOfThoughts from './ListOfThoughts';
-import Loading from "./Loading";
 import LikedThoughts from "./LikedThoughts";
 import white from './img/white-background.png';
 import Background from './Background';
-import ReccommendThoughts from "./ReccommendThoughts";
-import OptimisUI from './OptimisUI';
+import OptimisticUI from './OptimisticUI';
 import Logo from './img/logo.png'
 
 
@@ -21,14 +18,11 @@ const Thoughts = () => {
     const [newThoughts, setNewThoughts] = useState('');
     const [newThoughtsInput, setNewThoughtsInput] = useState(0);
     const [loading, setLoading] = useState(true);
-    const [countLikes, setCountLikes] = useState(JSON.parse(localStorage.getItem('liked')));
+    const [countLikes, setCountLikes] = useState(JSON.parse(localStorage.getItem('liked'))+ 0);
     const [likedThoughts, setLikeThoughts] = useState(JSON.parse(localStorage.getItem('message')));
-
     const [background, setBackground] = useState(white);
     const [thoughtIdeas, setThoughtIdeas] = useState('');
-    const [animation, setAnimation] = useState(false);
      
-    console.log(JSON.parse(localStorage.getItem('message')))
     
     const options = {
         method: 'POST',
@@ -52,7 +46,6 @@ const Thoughts = () => {
         fetch(API_KEY)
         .then(res => res.json())
         .then(data => {
-            console.log(data);
             setThoughts(data);
             setLoading(false);
         });
@@ -69,7 +62,7 @@ const Thoughts = () => {
         }, [])
         
  
-    // SEND INPUT DATO TO API
+    // SEND INPUT DATA TO API
     const handleFormSubmit = (e) => {
         e.preventDefault();
         
@@ -85,11 +78,9 @@ const Thoughts = () => {
     
     }
  
-    const arr = [];
-    
+
     //Save array to local storage
     const handleLikes = (thought) => {
-         setAnimation(true);
   
         fetch(`https://happy-thoughts-technigo.herokuapp.com/thoughts/${thought._id}/like`, {
                 method: 'POST'          
@@ -99,14 +90,11 @@ const Thoughts = () => {
             fetchData();            
             setCountLikes(countLikes+1);
             setLikeThoughts((prevMess) => ([data.message,...prevMess]))     
-            arr.push(likedThoughts);
         }))
-        console.log(arr)
     
     }
 
     useEffect(() => {
-
         localStorage.setItem('liked', JSON.stringify(countLikes))
     }, [countLikes])
 
@@ -117,13 +105,20 @@ const Thoughts = () => {
         setLikeThoughts([])
     }, [likedThoughts])
 
+
+    // HANDLE DELETE BUTTON
     const handleDeleteThoughts = () => {
-        setLikeThoughts([]);
+
+        if (window.confirm('Do you want to delete all liked thoughts ?')) {
+            setLikeThoughts([]);
+            setCountLikes(0);      
+        }
+
     }
     
  
     
-    // Handle Form Input
+    // HANDLE FORM INPUT
     const handleFormInput = (thoughtInput) => {
         setNewThoughtsInput(thoughtInput.length);
         setNewThoughts(thoughtInput);
@@ -156,16 +151,14 @@ const Thoughts = () => {
         />
         </form>
 
-        {loading ? <OptimisUI background = {background} />  
+        {loading ? <OptimisticUI background = {background} />  
         
         : (thoughts.map(thought => (
                 <div className='thought-card' style={{background: `url(${background})`}} key={thought._id}>
                 <ListOfThoughts 
                 thought = {thought} 
                 handleLikes = {handleLikes}
-                animation = {animation}
                 />
-
             </div>
             ))     
         )}  
@@ -176,6 +169,3 @@ const Thoughts = () => {
 
 export default Thoughts;
 
-//I will add animation for the button
-// Organize the code 
-// Change font size

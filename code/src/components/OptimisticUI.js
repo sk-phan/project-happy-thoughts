@@ -3,7 +3,7 @@ import React from "react";
 import ListOfThoughts from "./ListOfThoughts";
 import DefaultThoughts from "./DefaultThoughts";
 
-const OptimisUI = ( { background } ) => {
+const OptimisticUI = ( { background } ) => {
     console.log(DefaultThoughts)
     return <>
       {DefaultThoughts.map(thought => {
@@ -21,4 +21,4 @@ const OptimisUI = ( { background } ) => {
     
 }
 
-export default OptimisUI;
+export default OptimisticUI;

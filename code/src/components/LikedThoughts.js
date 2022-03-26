@@ -1,4 +1,3 @@
-import { yearsToMonths } from "date-fns";
 import React from "react";
 
 
@@ -14,9 +13,15 @@ const LikedThoughts = ( {countLikes, likedThoughts, handleDeleteThoughts, setLik
      <button className='delete-btn' onClick={handleDeleteThoughts} type='button'>Delete</button>
 
     </div>
-     {likedThoughts ? likedThoughts.map((item,i) => <p key={i} className='liked-text'>
+     {likedThoughts ? likedThoughts.map((item,i) => {
+       
+       return(
+        <p key={i} className='liked-text'>
          { item }
          </p>
+       )
+     }
+        
     ) : setLikeThoughts([])}
      </div>
   </>
