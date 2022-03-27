@@ -12,6 +12,20 @@
   --accentBlack: #333;
 }
 
+.hidden {
+  opacity: 0;
+}
+
+.animate {
+  position: absolute;
+  animation: ani 1s ease infinite;
+}
+
+@keyframes ani {
+  50% {
+    transform: scale(1.5);
+  }
+}
 
 /******  GENERAL STYLING ******/
 body {

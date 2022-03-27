@@ -22,6 +22,7 @@ const Thoughts = () => {
     const [likedThoughts, setLikeThoughts] = useState(JSON.parse(localStorage.getItem('message')));
     const [background, setBackground] = useState(white);
     const [thoughtIdeas, setThoughtIdeas] = useState('');
+    const [a, setA] = useState(false);
      
     
     const options = {
@@ -82,7 +83,7 @@ const Thoughts = () => {
 
     //Save array to local storage
     const handleLikes = (thought) => {
-  
+        setA(true);
         fetch(`https://happy-thoughts-technigo.herokuapp.com/thoughts/${thought._id}/like`, {
                 method: 'POST'          
         })
@@ -92,8 +93,13 @@ const Thoughts = () => {
             setCountLikes(countLikes+1);
             setLikeThoughts((prevMess) => ([data.message,...prevMess]))     
         }))
-    
+            if (a) {
+               document.getElementById(`${thought._id}`).classList.toggle('hidden');
+        
+          }
+        
     }
+
 
     useEffect(() => {
         localStorage.setItem('liked', JSON.stringify(countLikes))
@@ -157,6 +163,8 @@ const Thoughts = () => {
         : (thoughts.map(thought => (
                 <div className='thought-card' style={{background: `url(${background})`}} key={thought._id}>
                 <ListOfThoughts 
+                id = {thought._id} 
+                a = {a}
                 thought = {thought} 
                 handleLikes = {handleLikes}
                 />
