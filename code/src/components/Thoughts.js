@@ -89,7 +89,7 @@ const Thoughts = () => {
         })
         .then(res => res.json()) 
         .then(((data) => {
-            fetchData();            
+            setTimeout(fetchData,500);       
             setCountLikes(countLikes+1);
             setLikeThoughts((prevMess) => ([data.message,...prevMess]))     
         }))
