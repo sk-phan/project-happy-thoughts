@@ -8,7 +8,7 @@
 ## The problem
 
  At the beginning, it was challenging for me to understand how to use 'useEffect' in React effectively. 
- After hours of Googling and learning from external learning platforms, I turned to be more confident to work React and started to implement the useEffect in different cases to get the best out of it.
+ After hours of Googling and learning from external learning platforms, I turned to be more confident to work with React and started to implement the useEffect in different cases to get the best out of it.
  Besides that, my goal was to build save posts which were liked by users to local storage and display them nicely on the site. The final solutions was to save the item to local storage every time the user click Like and update them directly in the initial useState. 
  So the posts will not be lost after the page is refreshed. 
 
