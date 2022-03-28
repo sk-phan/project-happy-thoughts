@@ -27,7 +27,7 @@ After hours of Googling and learning from external learning platforms, I turned 
 
 ## View it live
 
-<<<<<<< HEAD
+<<<<<<< 
 https://happymind.netlify.app
 =======
 https://happymind.netlify.app
