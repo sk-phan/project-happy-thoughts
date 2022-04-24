@@ -25,8 +25,4 @@ After hours of Googling and learning from external learning platforms, I turned 
 
 ## View it live
 
-<<<<<<< 
 https://happymind.netlify.app
-=======
-https://happymind.netlify.app
->>>>>>> a63fbb8b3064f7155b6c58be48a35d9a943e364e
