@@ -25,4 +25,4 @@ After hours of Googling and learning from external learning platforms, I turned 
 
 ## View it live
 
-https://happymind.netlify.app
+https://suki-happythought.netlify.app
