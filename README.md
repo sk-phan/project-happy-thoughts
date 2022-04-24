@@ -15,9 +15,7 @@ Besides that, my goal was to build save posts which were liked by users to local
 
 After hours of Googling and learning from external learning platforms, I turned to be more confident to work with React and started to implement the useEffect in different cases to get the best out of it.
  Besides that, my goal was to save the 
- posts which were liked by users to local storage and display them nicely on the site. The final solutions was to save the item to local storage every time the user click Like and update them directly in the initial useState. 
->>>>>>> a63fbb8b3064f7155b6c58be48a35d9a943e364e
- So the posts will not be lost after the page is refreshed. 
+ posts which were liked by users to local storage and display them nicely on the site. The final solutions was to save the item to local storage every time the user click Like and update them directly in the initial useState. So the posts will not be lost after the page is refreshed. 
 
  Few functionalities which I added to the app including:
     - Thought Inspiration for those who can't find a happy thought and inspire them to share
