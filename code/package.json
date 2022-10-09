@@ -1,5 +1,6 @@
 {
   "name": "technigo-react-starter",
+  "author": "Suki Phan"
   "version": "1.0.0",
   "private": true,
   "dependencies": {
